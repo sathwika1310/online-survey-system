@@ -1,0 +1,13 @@
+{
+  "name": "survey-system",
+  "version": "1.0.0",
+  "description": "Online Survey System with Real-Time Dashboard - MERN Stack",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "start": "cd backend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

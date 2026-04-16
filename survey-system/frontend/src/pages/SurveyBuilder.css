@@ -1,0 +1,280 @@
+.builder { display: flex; flex-direction: column; height: calc(100vh - 64px); overflow: hidden; }
+
+.builder-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.builder-heading { font-size: 16px; font-weight: 600; }
+
+.builder-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 280px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Question list sidebar */
+.builder-sidebar {
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.question-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.question-thumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.question-thumb:hover { background: rgba(59,130,246,0.08); border-color: var(--border); }
+.question-thumb.active { background: rgba(59,130,246,0.12); border-color: var(--accent-blue); }
+.question-thumb.empty { border-color: rgba(239,68,68,0.3); }
+
+.qthumb-num {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.question-thumb.active .qthumb-num { background: var(--accent-blue); color: white; }
+
+.qthumb-info { flex: 1; min-width: 0; }
+.qthumb-text { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.qthumb-type { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+
+.required-dot {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: var(--accent-red);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.add-question-section {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.add-q-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+
+.question-type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+
+.add-type-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.add-type-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59,130,246,0.08); }
+.add-type-btn span:first-child { font-size: 16px; }
+
+/* Question editor */
+.builder-center {
+  overflow-y: auto;
+  padding: 24px;
+  background: var(--bg-primary);
+}
+
+.question-editor { animation: fadeIn 0.2s ease; }
+
+.qeditor-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.qeditor-num {
+  background: var(--gradient-primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.type-select { width: 180px; }
+
+.qeditor-actions { display: flex; gap: 6px; margin-left: auto; }
+
+.question-input { font-size: 16px; font-weight: 500; }
+
+.options-list { display: flex; flex-direction: column; gap: 8px; }
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.option-prefix { font-size: 16px; color: var(--accent-blue); flex-shrink: 0; }
+
+/* Rating */
+.rating-preview { display: flex; flex-direction: column; gap: 8px; }
+
+.stars-preview { display: flex; gap: 6px; }
+
+.star-preview { font-size: 28px; color: var(--accent-orange); cursor: default; }
+
+.rating-note { font-size: 12px; color: var(--text-muted); }
+
+/* Linear scale */
+.scale-range { display: flex; align-items: center; gap: 16px; }
+.scale-dash { font-size: 20px; color: var(--text-muted); margin-top: 16px; }
+
+/* Toggle */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.toggle-label input { display: none; }
+
+.toggle-track {
+  width: 36px;
+  height: 20px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  position: relative;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.toggle-track::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: var(--transition);
+}
+
+.toggle-label input:checked + .toggle-track {
+  background: rgba(59,130,246,0.3);
+  border-color: var(--accent-blue);
+}
+
+.toggle-label input:checked + .toggle-track::after {
+  background: var(--accent-blue);
+  left: 18px;
+}
+
+.required-toggle { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+/* Settings panel */
+.builder-settings {
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.settings-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.settings-toggles { display: flex; flex-direction: column; gap: 14px; margin: 16px 0; }
+
+.survey-summary {
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.summary-row strong { color: var(--accent-blue); }
+
+.builder-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@media (max-width: 1200px) {
+  .builder-layout { grid-template-columns: 220px 1fr; }
+  .builder-settings { display: none; }
+}
